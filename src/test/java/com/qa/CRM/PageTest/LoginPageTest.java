@@ -20,13 +20,12 @@ public class LoginPageTest extends TestBase {
 		System.setProperty("webdriver.chrome.driver", "/home/flatmind/Documents/Drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(4000, TimeUnit.SECONDS);
 	}
 	
 	@Test
 	public void login() throws IOException{
-		 int rowCount = Eo.getRowCount(login, 0);
-	
+		    int rowCount = Eo.getRowCount(login, 0);
 			CRMLoginPage lp = PageFactory.initElements(driver, CRMLoginPage.class);
 		    System.out.println(rowCount);
 		    for(int i=1;i<=rowCount;i++){
@@ -34,7 +33,7 @@ public class LoginPageTest extends TestBase {
 			System.out.println(r);
 			//System.out.println(r.getCell(0).getStringCellValue());
 			lp.Login(r);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 		    }
 	
 	}

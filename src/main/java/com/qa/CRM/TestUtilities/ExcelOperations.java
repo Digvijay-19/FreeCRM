@@ -81,9 +81,10 @@ public class ExcelOperations extends TestBase{
 		int rowCount = ws.getLastRowNum();
 		return rowCount;
 		}
+		
 		finally 
 		{
-		wb.close();
+		  wb.close();
 		}
 	}
 	
