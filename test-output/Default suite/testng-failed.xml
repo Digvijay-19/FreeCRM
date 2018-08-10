@@ -6,6 +6,7 @@
       <class name="com.qa.CRM.PageTest.LoginPageTest">
         <methods>
           <include name="setUp"/>
+          <include name="breakDown"/>
           <include name="login"/>
         </methods>
       </class> <!-- com.qa.CRM.PageTest.LoginPageTest -->

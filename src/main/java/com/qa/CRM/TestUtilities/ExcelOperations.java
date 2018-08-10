@@ -7,7 +7,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.qa.CRM.TestBase.TestBase;
@@ -16,13 +15,13 @@ import com.qa.CRM.TestBase.TestBase;
 public class ExcelOperations extends TestBase{
 	
 
-	public String getxlsorxlsxCellData(String folderpath,String filename, int sheetno, int rowno, int cellno) throws IOException {
+	public String getCellData(String filePath,String fileName, int sheetno, int rowno, int cellno) throws IOException {
 
 	Workbook wb = null;
 
-	File filepath = new File(folderpath+"\\"+filename);
+	File filepath = new File(filePath+"/"+fileName);
 	FileInputStream	fis = new FileInputStream(filepath);
-	String fileExtensionName = filename.substring(filename.indexOf("."));
+	String fileExtensionName = fileName.substring(fileName.indexOf("."));
 	if(fileExtensionName.equals(".xlsx")){
 	wb = new XSSFWorkbook(fis);
 	}else if(fileExtensionName.equals(".xls")){
@@ -35,13 +34,12 @@ public class ExcelOperations extends TestBase{
 
 	}
 
-	public int getRowCountxlsorxlsx(String folderpath,String filename, int sheetno) throws IOException {
+	public int getRowCount(String filePath,String fileName, int sheetno) throws IOException {
 
 	Workbook wb = null;
-
-	File filepath = new File(folderpath+"\\"+filename);	
+	File filepath = new File(filePath+"/"+fileName);	
 	FileInputStream	fis = new FileInputStream(filepath);	
-	String fileExtensionName = filename.substring(filename.indexOf("."));	
+	String fileExtensionName = fileName.substring(fileName.indexOf("."));	
 	if(fileExtensionName.equals(".xlsx")){	
 	wb = new XSSFWorkbook(fis);	
 	}else if(fileExtensionName.equals(".xls")){	
@@ -53,13 +51,12 @@ public class ExcelOperations extends TestBase{
 	}
 	
 	
-	public String getRowxlsorxlsx(String folderpath,String filename, int sheetno,int rowNum,int colNum) throws IOException {
+	public Row getRow(String filePath,String fileName, int sheetno,int rowNum,int colNum) throws IOException {
 
 		Workbook wb = null;
-
-		File filepath = new File(folderpath+"\\"+filename);	
+		File filepath = new File(filePath+"/"+fileName);	
 		FileInputStream	fis = new FileInputStream(filepath);	
-		String fileExtensionName = filename.substring(filename.indexOf("."));	
+		String fileExtensionName = fileName.substring(fileName.indexOf("."));	
 		if(fileExtensionName.equals(".xlsx")){	
 		wb = new XSSFWorkbook(fis);	
 		}else if(fileExtensionName.equals(".xls")){	
@@ -67,59 +64,7 @@ public class ExcelOperations extends TestBase{
 		}	
 		Sheet ws = wb.getSheetAt(sheetno);	
 		Row r = ws.getRow(rowNum);
-		String s = r.getCell(colNum).getStringCellValue();
-		return s;
-		}
-	
-	public int getRowCount(String path,int sheetNum) throws IOException{
-		
-		XSSFWorkbook wb = null;
-		try {
-		FileInputStream file=new FileInputStream(path);
-		wb = new XSSFWorkbook(file);
-		XSSFSheet ws=wb.getSheetAt(sheetNum);
-		int rowCount = ws.getLastRowNum();
-		return rowCount;
-		}
-		
-		finally 
-		{
-		  wb.close();
-		}
-	}
-	
-	public Row getRow(String path,int sheetNum,int rowNum) throws IOException{
-		
-	
-		XSSFWorkbook wb = null;
-		try {
-		FileInputStream file=new FileInputStream(path);
-		wb = new XSSFWorkbook(file);
-		XSSFSheet ws=wb.getSheetAt(sheetNum);
-		Row r = ws.getRow(rowNum);	
 		return r;
-	} 
-		finally
-		{
-		wb.close();
-	   }
-	}
-	
-	
-	public String getCellData(String path,int sheetNum,int rowNum,int cellNum) throws IOException{
-		
-
-		XSSFWorkbook wb = null;
-		try {
-		FileInputStream file=new FileInputStream(path);
-		wb = new XSSFWorkbook(file);
-		XSSFSheet ws=wb.getSheetAt(sheetNum);
-		String data = ws.getRow(rowNum).getCell(cellNum).getStringCellValue();
-		return data;
-	}
-		finally
-		{
-			wb.close();
 		}
-	}
+	
 }
