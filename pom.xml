@@ -21,7 +21,7 @@
     <artifactId>selenium-server</artifactId>
     <version>3.13.0</version>
 </dependency>
-    <dependency>
+   <dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.11</version>
@@ -69,6 +69,14 @@
     <artifactId>xmlbeans</artifactId>
     <version>3.0.0</version>
 </dependency>
+    
+<!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+<dependency>
+    <groupId>com.relevantcodes</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>1.41</version>
+</dependency>
+
     
   </dependencies>
 </project>

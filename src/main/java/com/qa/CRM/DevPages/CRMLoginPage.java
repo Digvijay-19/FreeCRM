@@ -15,28 +15,28 @@ public class CRMLoginPage extends TestBase{
 
 	 CRMLoginPage lp = null;
 	 
-	 
 	 @FindBy(xpath = "//a[contains(text(),'Features')]")
 	 WebElement crmFeature;
-	 
 	
-	 
 	 public void Login(Row r){
 		 
 		lp = PageFactory.initElements(driver, CRMLoginPage.class);
-		if(r.getCell(0).getStringCellValue()=="Chrome")
+		//System.out.println(r.getCell(0).getStringCellValue());
+		if(r.getCell(0).getStringCellValue()!=null)
 		{
-	      System.setProperty("webdriver.chrome.driver", "/home/flatmind/Documents/Drivers/chromedriver");
-		  driver = new ChromeDriver();
-		  driver.manage().window().maximize();
-		  driver.manage().timeouts().pageLoadTimeout(4000, TimeUnit.SECONDS);
-	    }
-		driver.get(r.getCell(1).getStringCellValue());
+		      System.setProperty("webdriver.chrome.driver", "/home/flatmind/Documents/Drivers/chromedriver");
+			  driver = new ChromeDriver();
+			  driver.manage().window().maximize();
+			  driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.SECONDS);
+		}
 		
+		  driver.get(r.getCell(1).getStringCellValue());
+			  
 	 }
 	 
-	 public void verifyModelsName(){
-		 
-	 }
+	    public void verifyCRMFeature(){
+	    	crmFeature.click();
+	    	
+	}
 
 }
